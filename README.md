@@ -7,7 +7,7 @@
 ### chakra ui
 
 imp point--
-when admin add menber and if member wants to login then the password will be its username--
+when admin add menber and if member wants to login then the password will be its username--.
 use username as password 
 
 
