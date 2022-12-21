@@ -8,6 +8,7 @@ import { Register } from './pages/Register';
 import { Login } from './pages/Login';
 import { Navbar } from './pages/Navbar';
 import { AdminDash } from './pages/AdminDash';
+import { Billing } from './pages/Billing';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/admindash' element={<AdminDash />}></Route>
+        <Route path='/billing' element={<Billing/>}></Route>
       </Routes>
     </div>
   );

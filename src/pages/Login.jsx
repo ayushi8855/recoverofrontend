@@ -12,14 +12,18 @@ import {
     Image,
   } from "@chakra-ui/react";
 import axios from "axios";
-  import { useState } from "react";
-  import { Link, Navigate } from "react-router-dom";
-  
+  import { useContext, useState } from "react";
+  import { Link, useNavigate } from "react-router-dom";
+  import {AuthContext} from "../context/AuthContext"
+  import { UserContext } from "../context/UserContext";
   export const Login = () => {
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
-  
+    const navigate = useNavigate();
+    const {isAuth,toggleAuth}= useContext(AuthContext)
+    const{userdata,username11} =useContext(UserContext)
     const submitHandler = async(e) => {
+
       e.preventDefault();
   
       const payload = {
@@ -27,16 +31,21 @@ import axios from "axios";
         password: userPassword,
       };
 // ---------------------------------------------------------------------------------
-      axios.post('https://localhost:5000/login',payload)
+      axios.post('http://localhost:5000/login',payload)
       .then(
         response => 
         {
-          alert(response.data.message)
+         
          if(response.status === 200){
-          // toggleAuth()
-          console.log(response.data)
+          if(response.data.user.role==="admin"){
+            toggleAuth(!isAuth)
+            username11(response.data.user)
+          }
+         
+          console.log(response.data.user)
+          alert("logging successfully")
           // username11(response.data.userdata)
-            // navigate("/")
+            navigate("/")
       
           //   setToken(response.data.token)
           }
@@ -120,3 +129,21 @@ import axios from "axios";
     </Box>
     );
   };
+
+
+  // tr----
+  // dsa  fibonnaci recursion stack queue
+  // amstrom number
+//reversing string
+//reactjs,nodejs
+//event bubbling, useref
+//conditional rendering
+//event loop , hosting
+//apis
+//redux flow 
+//node basic , module file system, how to connect data base
+//projects
+//chakra ui
+// stylecomponent
+//axios
+//dependencies

@@ -53,8 +53,18 @@ export const Register = () => {
       name:userName,
       email: userEmail,
       password: userPassword,
+      role:"admin"
     };
-    
+    try {
+      let res = await axios.post("http://localhost:5000/register",details)
+      console.log(res);
+      alert("Registration successfull !");
+      navigate("/login");
+    } catch (error) {
+      alert(error.response.data.message);
+      console.log(error);
+    }
+
     console.log("details",details);
      
 
